@@ -38,7 +38,7 @@ namespace Hotel_Inventory
                 adapter = new MySqlDataAdapter(query, conn);
                 adapter.Fill(dt);
                 datagridview_inventory.DataSource = dt;
-
+                    
             }
             datagridview_inventory.Columns["idmInventory"].Visible = false;
             datagridview_inventory.Columns["Status"].Visible = false;
@@ -179,7 +179,7 @@ namespace Hotel_Inventory
         public stockoutlist stklist;
         private void btn_stockoutlist_Click(object sender, EventArgs e)
         {
-            stklist = new stockoutlist(inventoryid);
+            stklist = new stockoutlist();
             //stklist.reference = this;
             stklist.Show();
         }
