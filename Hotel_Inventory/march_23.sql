@@ -84,9 +84,8 @@ DROP TABLE IF EXISTS `expenses_report`;
 CREATE TABLE `expenses_report` (
   `id` int(11) NOT NULL,
   `idSupplier` varchar(45) DEFAULT NULL,
-  `idPurchaseOrder` varchar(45) DEFAULT NULL,
   `expense` varchar(45) DEFAULT NULL,
-  `dateRecorded` datetime DEFAULT NULL,
+  `dateRecorded` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -196,7 +195,6 @@ CREATE TABLE `menu_item` (
 
 LOCK TABLES `menu_item` WRITE;
 /*!40000 ALTER TABLE `menu_item` DISABLE KEYS */;
-INSERT INTO `menu_item` VALUES (0,'qwer','qwert','99');
 /*!40000 ALTER TABLE `menu_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,10 +207,7 @@ DROP TABLE IF EXISTS `minventory`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `minventory` (
   `idmInventory` int(11) NOT NULL,
-  `mInventorycol` varchar(45) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
-  `stock_in_date` datetime DEFAULT NULL,
-  `stock_out_date` datetime DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`idmInventory`),
@@ -227,7 +222,6 @@ CREATE TABLE `minventory` (
 
 LOCK TABLES `minventory` WRITE;
 /*!40000 ALTER TABLE `minventory` DISABLE KEYS */;
-INSERT INTO `minventory` VALUES (0,'qwer',1,NULL,NULL,NULL,1);
 /*!40000 ALTER TABLE `minventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,15 +259,15 @@ DROP TABLE IF EXISTS `mstkout`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `mstkout` (
-  `idmstkout` int(11) NOT NULL,
-  `mInventory_idmInventory` int(11) NOT NULL,
+  `idmstkout` int(11) NOT NULL AUTO_INCREMENT,
+  `idmInventory` int(11) NOT NULL,
   `stockout_date` datetime DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   `mstkoutcol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idmstkout`),
-  KEY `fk_mstkout_mInventory1_idx` (`mInventory_idmInventory`),
-  CONSTRAINT `fk_mstkout_mInventory1` FOREIGN KEY (`mInventory_idmInventory`) REFERENCES `minventory` (`idmInventory`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_mstkout_mInventory1_idx` (`idmInventory`),
+  CONSTRAINT `fk_mstkout_mInventory1` FOREIGN KEY (`idmInventory`) REFERENCES `minventory` (`idmInventory`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -378,8 +372,6 @@ CREATE TABLE `product` (
   `name` varchar(45) DEFAULT NULL,
   `price` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
-  `supplier_id` varchar(45) DEFAULT NULL,
-  `supplier_Expenses_Report_idtable1` int(11) DEFAULT NULL,
   `dateCreated` datetime DEFAULT NULL,
   `productcol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -392,7 +384,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `product` VALUES (1,'Banana','100','Saging',NULL,NULL),(2,'Mango','200','Manga',NULL,NULL);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,16 +401,14 @@ CREATE TABLE `purchase_order` (
   `requestingDepartment` varchar(45) DEFAULT NULL,
   `quantity` varchar(45) DEFAULT NULL,
   `unit` varchar(45) DEFAULT NULL,
-  `Manage_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `expenses_report_id` int(11) DEFAULT NULL,
+  `Manage_id` int(11) NOT NULL,
+  `expenses_report_id` int(11) NOT NULL,
+  `supplier_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Purchase Order_Manage1_idx` (`Manage_id`),
-  KEY `fk_purchase_order_list_product1_idx` (`product_id`),
   KEY `fk_purchase order_expenses report1_idx` (`expenses_report_id`),
   CONSTRAINT `fk_Purchase Order_Manage1` FOREIGN KEY (`Manage_id`) REFERENCES `manage` (`id`),
-  CONSTRAINT `fk_purchase order_expenses report1` FOREIGN KEY (`expenses_report_id`) REFERENCES `expenses_report` (`id`),
-  CONSTRAINT `fk_purchase_order_list_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
+  CONSTRAINT `fk_purchase order_expenses report1` FOREIGN KEY (`expenses_report_id`) REFERENCES `expenses_report` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -429,6 +419,37 @@ CREATE TABLE `purchase_order` (
 LOCK TABLES `purchase_order` WRITE;
 /*!40000 ALTER TABLE `purchase_order` DISABLE KEYS */;
 /*!40000 ALTER TABLE `purchase_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `purchase_order_line`
+--
+
+DROP TABLE IF EXISTS `purchase_order_line`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `purchase_order_line` (
+  `POL_id` int(11) NOT NULL,
+  `price` decimal(22,2) NOT NULL,
+  `subtotal` decimal(22,2) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `purchase_order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  PRIMARY KEY (`POL_id`),
+  KEY `fk_purchase_order_line_purchase_order1_idx` (`purchase_order_id`),
+  KEY `fk_purchase_order_line_product1_idx` (`product_id`),
+  CONSTRAINT `fk_purchase_order_line_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
+  CONSTRAINT `fk_purchase_order_line_purchase_order1` FOREIGN KEY (`purchase_order_id`) REFERENCES `purchase_order` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `purchase_order_line`
+--
+
+LOCK TABLES `purchase_order_line` WRITE;
+/*!40000 ALTER TABLE `purchase_order_line` DISABLE KEYS */;
+/*!40000 ALTER TABLE `purchase_order_line` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -545,13 +566,13 @@ DROP TABLE IF EXISTS `supplier`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `supplier` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `supplierName` varchar(45) DEFAULT NULL,
   `supplierPhone` varchar(45) DEFAULT NULL,
   `supplierFax` varchar(45) DEFAULT NULL,
   `supplierAddress` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -560,6 +581,7 @@ CREATE TABLE `supplier` (
 
 LOCK TABLES `supplier` WRITE;
 /*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
+INSERT INTO `supplier` VALUES (1,'Lij Anakan','09923944342','7999','ComVal'),(2,'Potsee','09923944333','7992','Davao'),(3,'Nadir Gay Farm','09923944223','3343','Tagum');
 /*!40000 ALTER TABLE `supplier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -580,4 +602,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-20 11:28:56
+-- Dump completed on 2019-03-23 12:59:43
