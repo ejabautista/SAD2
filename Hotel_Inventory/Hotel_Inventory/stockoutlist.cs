@@ -18,6 +18,7 @@ namespace Hotel_Inventory
         dbconnector connect = new dbconnector();
         MySqlDataAdapter adapter;
         DataTable dt;
+
         public string invid;
         public stockoutlist()
         {
@@ -39,19 +40,20 @@ namespace Hotel_Inventory
         {
             using (MySqlConnection conn = connect.connector())
             {
-                string query = "SELECT idmInventory, mInventorycol, stock_in_date, product_id, stock_out_date, quantity, status FROM minventory INNER JOIN menu_item ON minventory.idmInventory = menu_item.id WHERE minventory.status = 0";
+                //string query = "SELECT idmInventory, mInventorycol, stock_in_date, product_id, stock_out_date, quantity, status FROM minventory, menu_item WHERE minventory.status = 1 and menu_item.id = '" + Inventorymgt.inventoryid +"'";
+                string query = "select * from mstkout";
                 dt = new DataTable();
                 adapter = new MySqlDataAdapter(query, conn);
                 adapter.Fill(dt);
                 datagridview_stockout.DataSource = dt;
 
+                datagridview_stockout.Columns["idmstkout"].Visible = false;
+                datagridview_stockout.Columns["idmInventory"].Visible = false;
+               datagridview_stockout.Columns["stockout_date"].HeaderText = "Stock Out Date";
+                datagridview_stockout.Columns["quantity"].HeaderText = "Quantity";
+                datagridview_stockout.Columns["mstkoutcol"].Visible = false;
+
             }
-            datagridview_stockout.Columns["idmInventory"].Visible = false;
-            datagridview_stockout.Columns["Status"].Visible = false;
-            datagridview_stockout.Columns["stock_in_date"].HeaderText = "Stock In Date";
-            datagridview_stockout.Columns["stock_out_date"].HeaderText = "Stock Out Date";
-            datagridview_stockout.Columns["product_id"].HeaderText = "Product ID";
-            datagridview_stockout.Columns["mInventorycol"].HeaderText = "Item Name";
         }
     }
 }

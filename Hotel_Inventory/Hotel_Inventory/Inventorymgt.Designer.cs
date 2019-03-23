@@ -106,6 +106,7 @@
             this.datagridview_inventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridview_inventory.Size = new System.Drawing.Size(1210, 337);
             this.datagridview_inventory.TabIndex = 2;
+            this.datagridview_inventory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_inventory_CellClick);
             // 
             // groupBox2
             // 
@@ -133,7 +134,7 @@
             // 
             // btn_stockout
             // 
-            this.btn_stockout.Location = new System.Drawing.Point(591, 20);
+            this.btn_stockout.Location = new System.Drawing.Point(584, 25);
             this.btn_stockout.Name = "btn_stockout";
             this.btn_stockout.Size = new System.Drawing.Size(134, 69);
             this.btn_stockout.TabIndex = 35;

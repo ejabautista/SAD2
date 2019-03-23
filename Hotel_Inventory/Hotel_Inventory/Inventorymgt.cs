@@ -20,7 +20,7 @@ namespace Hotel_Inventory
         DataTable dt;
 
         public string quantity;
-        public string inventoryid;
+        public static string inventoryid;
 
 
         public Inventorymgt()
@@ -33,51 +33,30 @@ namespace Hotel_Inventory
         {
             using (MySqlConnection conn = connect.connector())
             {
-                string query = "SELECT idmInventory, mInventorycol, stock_in_date, product_id, stock_out_date, quantity, status FROM minventory INNER JOIN menu_item ON minventory.idmInventory = menu_item.id WHERE minventory.status = 0";
+                string query = "SELECT *, (SELECT name from product where product_id = product.id) as product FROM sad2_db.minventory;";
                 dt = new DataTable();
                 adapter = new MySqlDataAdapter(query, conn);
                 adapter.Fill(dt);
                 datagridview_inventory.DataSource = dt;
-                    
+   
             }
             datagridview_inventory.Columns["idmInventory"].Visible = false;
-            datagridview_inventory.Columns["Status"].Visible = false;
-            datagridview_inventory.Columns["stock_in_date"].HeaderText = "Stock In Date";
-            datagridview_inventory.Columns["stock_out_date"].HeaderText = "Stock Out Date";
-            datagridview_inventory.Columns["product_id"].HeaderText = "Product ID";
-            datagridview_inventory.Columns["mInventorycol"].HeaderText = "Item Name";
+            datagridview_inventory.Columns["product_id"].Visible = false;
+            datagridview_inventory.Columns["product"].HeaderText = "Item Name";
+            datagridview_inventory.Columns["quantity"].HeaderText = "Quantity";
         }
 
-        public void readdata2()
-        {
-            using (MySqlConnection conn = connect.connector())
-            {
-                string query = "SELECT idmInventory, menu_item.name, menu_item.desc, stock_in_date, stock_out_date, Quantity, Status FROM minventory INNER JOIN menu_item ON minventory.idmInventory = menu_item.id WHERE minventory.status = 0";
-                dt = new DataTable();
-                adapter = new MySqlDataAdapter(query, conn);
-                adapter.Fill(dt);
-                datagridview_inventory.DataSource = dt;
-
-            }
-            datagridview_inventory.Columns["idmInventory"].Visible = false;
-            datagridview_inventory.Columns["Status"].Visible = false;
-            datagridview_inventory.Columns["Quantity"].HeaderText = "Item Quantity";
-            datagridview_inventory.Columns["stock_in_date"].HeaderText = "Stock In Date";
-            datagridview_inventory.Columns["stock_out_date"].HeaderText = "Stock Out Date";
-            datagridview_inventory.Columns["menu_item.name"].HeaderText = "Item Name";
-            datagridview_inventory.Columns["menu_item.desc"].HeaderText = "Item Description";
-        }
+       
 
         private void updateinventory()
         {
             var dbconnect = new dbconnector();
             using (dbconnection = dbconnect.connector())
             {
-                using (var command = new MySqlCommand("UPDATE minventory SET quantity = @quantity, stock_out_date = @sod WHERE idmInventory = @ayd;", dbconnection))
+                using (var command = new MySqlCommand("UPDATE minventory SET quantity = @quantity WHERE idmInventory = @ayd;", dbconnection))
                 {
                     dbconnection.Open();
                     command.Parameters.AddWithValue("@quantity", quantityadd());
-                    command.Parameters.AddWithValue("@sod", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     command.Parameters.AddWithValue("@ayd", inventoryid);
                     command.ExecuteNonQuery();
                 }
@@ -91,7 +70,7 @@ namespace Hotel_Inventory
             {
 
                 dbconnection.Open();
-                using (var com = new MySqlCommand("INSERT INTO mstkout(idmInventory, stock_out_date, quantity, status) VALUES(@inventoryid, @date, @quantity, @stat)", dbconnection))
+                using (var com = new MySqlCommand("INSERT INTO mstkout(idmInventory, quantity, stockout_date) VALUES(@inventoryid, @quantity, @date)", dbconnection))
                 {
                     com.Parameters.AddWithValue("@inventoryid", inventoryid);
                     com.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"));
@@ -158,12 +137,13 @@ namespace Hotel_Inventory
                         {
                             updateinventory();
                             stockout();
-                            readdata();
+                            
                             textBox2.Clear();
                             datagridview_inventory.ClearSelection();
                             btn_stockoutlist.Enabled = false;
                             MessageBox.Show("SUCCESSFULLY STOCKED-OUT QUANTITY OF ITEMS!", "ATTENTION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                            readdata();
+                    }
                     }
                 else
                 {
@@ -174,6 +154,7 @@ namespace Hotel_Inventory
             {
                 MessageBox.Show("QUANTITY MUST NOT BE LEFT EMPTY, OR SET TO ZERO", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         public stockoutlist stklist;
@@ -182,6 +163,14 @@ namespace Hotel_Inventory
             stklist = new stockoutlist();
             //stklist.reference = this;
             stklist.Show();
+        }
+
+        private void datagridview_inventory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+                btn_stockoutlist.Enabled = true;
+                textBox2.Enabled = true;
+                inventoryid = datagridview_inventory.Rows[e.RowIndex].Cells["idmInventory"].Value.ToString();
+                quantity = datagridview_inventory.Rows[e.RowIndex].Cells["quantity"].Value.ToString();
         }
     }
 }

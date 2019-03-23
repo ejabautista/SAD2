@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="viewarchive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewarchive.Designer.cs">
+      <DependentUpon>viewarchive.cs</DependentUpon>
+    </Compile>
     <Compile Include="DbConnect.cs" />
     <Compile Include="dbconnector.cs" />
     <Compile Include="Inventorymgt.cs">
@@ -81,6 +87,9 @@
     <Compile Include="stockoutlist.Designer.cs">
       <DependentUpon>stockoutlist.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="viewarchive.resx">
+      <DependentUpon>viewarchive.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventorymgt.resx">
       <DependentUpon>Inventorymgt.cs</DependentUpon>
     </EmbeddedResource>
