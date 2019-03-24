@@ -32,7 +32,7 @@ namespace Hotel_Inventory
         {
             using (MySqlConnection conn = connect.connector())
             {
-                string query = "SELECT * FROM sad2_db.menu_item";
+                string query = "SELECT * FROM sad2_db.product";
                 dt = new DataTable();
                 adapter = new MySqlDataAdapter(query, conn);
                 adapter.Fill(dt);
@@ -40,7 +40,7 @@ namespace Hotel_Inventory
 
                 dtgv_itemmgt.Columns["id"].Visible = false;
                 dtgv_itemmgt.Columns["name"].HeaderText = "Name";
-                //dtgv_itemmgt.Columns["description"].HeaderText = "Description";
+                dtgv_itemmgt.Columns["description"].HeaderText = "Description";
                 dtgv_itemmgt.Columns["price"].HeaderText = "Price";
 
             }
@@ -63,7 +63,7 @@ namespace Hotel_Inventory
                 using (MySqlConnection conn = connect.connector())
                 {
 
-                    String query = "SELECT * FROM menu_item where id = '" + product_id + "'";
+                    String query = "SELECT * FROM product where id = '" + product_id + "'";
 
                     MySqlCommand comm = new MySqlCommand(query, conn);
                     comm.CommandText = query;
@@ -111,6 +111,11 @@ namespace Hotel_Inventory
             frmview = new viewarchive();
             //frmim.reference = this;
             frmview.Show();
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            clear();
         }
     }
     

@@ -33,7 +33,7 @@ namespace Hotel_Inventory
         {
             using (MySqlConnection conn = connect.connector())
             {
-                string query = "SELECT *, (SELECT name from product where product_id = product.id) as product FROM sad2_db.minventory;";
+                string query = "SELECT NAME, IDMINVENTORY, QUANTITY FROM MENUITEM, MINVENTORY WHERE ID = PRODUCT_ID";
                 dt = new DataTable();
                 adapter = new MySqlDataAdapter(query, conn);
                 adapter.Fill(dt);
@@ -41,8 +41,7 @@ namespace Hotel_Inventory
    
             }
             datagridview_inventory.Columns["idmInventory"].Visible = false;
-            datagridview_inventory.Columns["product_id"].Visible = false;
-            datagridview_inventory.Columns["product"].HeaderText = "Item Name";
+            datagridview_inventory.Columns["name"].HeaderText = "Item Name";
             datagridview_inventory.Columns["quantity"].HeaderText = "Quantity";
         }
 
@@ -100,7 +99,7 @@ namespace Hotel_Inventory
         {
             frmol = new orderlistmgt();
             //frmol.reference = this;
-            frmol.Show();
+            frmol.ShowDialog();
         }
 
         public stockinmgt frmsinout;
@@ -108,7 +107,7 @@ namespace Hotel_Inventory
         {
             frmsinout = new stockinmgt();
             //frmsinout.reference = this;
-            frmsinout.Show();
+            frmsinout.ShowDialog();
         }
 
         public itemmgt frmim;
@@ -116,7 +115,7 @@ namespace Hotel_Inventory
         {
             frmim = new itemmgt();
             //frmim.reference = this;
-            frmim.Show();
+            frmim.ShowDialog();
         }
         
         private void Inventorymgt_Load(object sender, EventArgs e)
@@ -172,5 +171,7 @@ namespace Hotel_Inventory
                 inventoryid = datagridview_inventory.Rows[e.RowIndex].Cells["idmInventory"].Value.ToString();
                 quantity = datagridview_inventory.Rows[e.RowIndex].Cells["quantity"].Value.ToString();
         }
+
     }
+    
 }
