@@ -30,13 +30,18 @@
         {
             this.btnAdd2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtprice = new System.Windows.Forms.TextBox();
+            this.productTxt = new System.Windows.Forms.TextBox();
+            this.vendorName = new System.Windows.Forms.TextBox();
             this.quanNum = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgvOrd = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
-            this.editBtn = new System.Windows.Forms.Button();
             this.date = new System.Windows.Forms.DateTimePicker();
             this.txtSub = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,30 +50,24 @@
             this.lblDate2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.delBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dtgvPOL = new System.Windows.Forms.DataGridView();
             this.dtgvPO = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dataComplete = new System.Windows.Forms.DataGridView();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.dataCancel = new System.Windows.Forms.DataGridView();
-            this.vendorName = new System.Windows.Forms.TextBox();
-            this.productTxt = new System.Windows.Forms.TextBox();
-            this.txtprice = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.delBtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.cancelBtn = new System.Windows.Forms.Button();
+            this.dtgvPOLC = new System.Windows.Forms.DataGridView();
+            this.dtgvPOC = new System.Windows.Forms.DataGridView();
+            this.dataComplete = new System.Windows.Forms.DataGridView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dtgvPOLCL = new System.Windows.Forms.DataGridView();
+            this.dtgvPOCL = new System.Windows.Forms.DataGridView();
+            this.dataCancel = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quanNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvOrd)).BeginInit();
@@ -77,13 +76,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPOL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPO)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPOLC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPOC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataComplete)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPOLCL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPOCL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataCancel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAdd2
@@ -93,7 +92,7 @@
             this.btnAdd2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd2.ForeColor = System.Drawing.Color.Black;
-            this.btnAdd2.Location = new System.Drawing.Point(898, 385);
+            this.btnAdd2.Location = new System.Drawing.Point(1023, 372);
             this.btnAdd2.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd2.Name = "btnAdd2";
             this.btnAdd2.Size = new System.Drawing.Size(108, 35);
@@ -116,7 +115,6 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dtgvOrd);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.editBtn);
             this.groupBox1.Controls.Add(this.btnAdd2);
             this.groupBox1.Controls.Add(this.date);
             this.groupBox1.Controls.Add(this.txtSub);
@@ -131,6 +129,68 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Details";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(865, 331);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 29);
+            this.label7.TabIndex = 37;
+            this.label7.Text = "Total:";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(947, 324);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(184, 40);
+            this.txtTotal.TabIndex = 36;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(58, 155);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(75, 29);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Price:";
+            // 
+            // txtprice
+            // 
+            this.txtprice.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtprice.Location = new System.Drawing.Point(141, 157);
+            this.txtprice.Margin = new System.Windows.Forms.Padding(4);
+            this.txtprice.Name = "txtprice";
+            this.txtprice.Size = new System.Drawing.Size(345, 29);
+            this.txtprice.TabIndex = 34;
+            // 
+            // productTxt
+            // 
+            this.productTxt.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productTxt.Location = new System.Drawing.Point(141, 110);
+            this.productTxt.Margin = new System.Windows.Forms.Padding(4);
+            this.productTxt.Name = "productTxt";
+            this.productTxt.Size = new System.Drawing.Size(345, 29);
+            this.productTxt.TabIndex = 33;
+            this.productTxt.TextChanged += new System.EventHandler(this.productTxt_TextChanged);
+            // 
+            // vendorName
+            // 
+            this.vendorName.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vendorName.Location = new System.Drawing.Point(141, 67);
+            this.vendorName.Margin = new System.Windows.Forms.Padding(4);
+            this.vendorName.Name = "vendorName";
+            this.vendorName.Size = new System.Drawing.Size(345, 29);
+            this.vendorName.TabIndex = 32;
+            this.vendorName.TextChanged += new System.EventHandler(this.vendorName_TextChanged);
             // 
             // quanNum
             // 
@@ -174,7 +234,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(536, 55);
+            this.label1.Location = new System.Drawing.Point(661, 42);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 29);
@@ -189,7 +249,7 @@
             this.dtgvOrd.AllowUserToResizeRows = false;
             this.dtgvOrd.BackgroundColor = System.Drawing.Color.White;
             this.dtgvOrd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvOrd.Location = new System.Drawing.Point(541, 88);
+            this.dtgvOrd.Location = new System.Drawing.Point(666, 75);
             this.dtgvOrd.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvOrd.Name = "dtgvOrd";
             this.dtgvOrd.ReadOnly = true;
@@ -214,27 +274,11 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // editBtn
-            // 
-            this.editBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.editBtn.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.editBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editBtn.ForeColor = System.Drawing.Color.Black;
-            this.editBtn.Location = new System.Drawing.Point(1055, 43);
-            this.editBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(117, 41);
-            this.editBtn.TabIndex = 23;
-            this.editBtn.Text = "Edit";
-            this.editBtn.UseVisualStyleBackColor = false;
-            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
-            // 
             // date
             // 
             this.date.CustomFormat = "";
             this.date.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date.Location = new System.Drawing.Point(652, 22);
+            this.date.Location = new System.Drawing.Point(777, 9);
             this.date.Margin = new System.Windows.Forms.Padding(4);
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(345, 29);
@@ -291,7 +335,7 @@
             this.lblDate2.AutoSize = true;
             this.lblDate2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate2.ForeColor = System.Drawing.Color.Black;
-            this.lblDate2.Location = new System.Drawing.Point(536, 22);
+            this.lblDate2.Location = new System.Drawing.Point(661, 9);
             this.lblDate2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate2.Name = "lblDate2";
             this.lblDate2.Size = new System.Drawing.Size(69, 29);
@@ -326,6 +370,40 @@
             this.tabPage2.Text = "PENDING";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // cancelBtn
+            // 
+            this.cancelBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.cancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelBtn.ForeColor = System.Drawing.Color.Black;
+            this.cancelBtn.Location = new System.Drawing.Point(347, 354);
+            this.cancelBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(134, 41);
+            this.cancelBtn.TabIndex = 25;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = false;
+            this.cancelBtn.Visible = false;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // delBtn
+            // 
+            this.delBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.delBtn.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.delBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delBtn.ForeColor = System.Drawing.Color.Black;
+            this.delBtn.Location = new System.Drawing.Point(1026, 354);
+            this.delBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.delBtn.Name = "delBtn";
+            this.delBtn.Size = new System.Drawing.Size(188, 41);
+            this.delBtn.TabIndex = 24;
+            this.delBtn.Text = "Delivered";
+            this.delBtn.UseVisualStyleBackColor = false;
+            this.delBtn.Visible = false;
+            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -358,7 +436,7 @@
             this.dtgvPOL.AllowUserToResizeRows = false;
             this.dtgvPOL.BackgroundColor = System.Drawing.Color.White;
             this.dtgvPOL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvPOL.Location = new System.Drawing.Point(562, 45);
+            this.dtgvPOL.Location = new System.Drawing.Point(576, 45);
             this.dtgvPOL.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvPOL.Name = "dtgvPOL";
             this.dtgvPOL.ReadOnly = true;
@@ -390,8 +468,8 @@
             // 
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Controls.Add(this.dataGridView1);
-            this.tabPage3.Controls.Add(this.dataGridView2);
+            this.tabPage3.Controls.Add(this.dtgvPOLC);
+            this.tabPage3.Controls.Add(this.dtgvPOC);
             this.tabPage3.Controls.Add(this.dataComplete);
             this.tabPage3.Location = new System.Drawing.Point(4, 38);
             this.tabPage3.Name = "tabPage3";
@@ -399,133 +477,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "COMPLETED";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // dataComplete
-            // 
-            this.dataComplete.AllowUserToAddRows = false;
-            this.dataComplete.AllowUserToDeleteRows = false;
-            this.dataComplete.AllowUserToResizeColumns = false;
-            this.dataComplete.AllowUserToResizeRows = false;
-            this.dataComplete.BackgroundColor = System.Drawing.Color.White;
-            this.dataComplete.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataComplete.Location = new System.Drawing.Point(4, 4);
-            this.dataComplete.Margin = new System.Windows.Forms.Padding(4);
-            this.dataComplete.Name = "dataComplete";
-            this.dataComplete.ReadOnly = true;
-            this.dataComplete.RowHeadersVisible = false;
-            this.dataComplete.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataComplete.Size = new System.Drawing.Size(1238, 511);
-            this.dataComplete.TabIndex = 2;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.label10);
-            this.tabPage4.Controls.Add(this.label11);
-            this.tabPage4.Controls.Add(this.dataGridView3);
-            this.tabPage4.Controls.Add(this.dataGridView4);
-            this.tabPage4.Controls.Add(this.dataCancel);
-            this.tabPage4.Location = new System.Drawing.Point(4, 38);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1246, 410);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "CANCELLED";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // dataCancel
-            // 
-            this.dataCancel.AllowUserToAddRows = false;
-            this.dataCancel.AllowUserToDeleteRows = false;
-            this.dataCancel.AllowUserToResizeColumns = false;
-            this.dataCancel.AllowUserToResizeRows = false;
-            this.dataCancel.BackgroundColor = System.Drawing.Color.White;
-            this.dataCancel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataCancel.Location = new System.Drawing.Point(4, 4);
-            this.dataCancel.Margin = new System.Windows.Forms.Padding(4);
-            this.dataCancel.Name = "dataCancel";
-            this.dataCancel.ReadOnly = true;
-            this.dataCancel.RowHeadersVisible = false;
-            this.dataCancel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataCancel.Size = new System.Drawing.Size(1238, 511);
-            this.dataCancel.TabIndex = 3;
-            // 
-            // vendorName
-            // 
-            this.vendorName.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vendorName.Location = new System.Drawing.Point(141, 67);
-            this.vendorName.Margin = new System.Windows.Forms.Padding(4);
-            this.vendorName.Name = "vendorName";
-            this.vendorName.Size = new System.Drawing.Size(345, 29);
-            this.vendorName.TabIndex = 32;
-            this.vendorName.TextChanged += new System.EventHandler(this.vendorName_TextChanged);
-            // 
-            // productTxt
-            // 
-            this.productTxt.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productTxt.Location = new System.Drawing.Point(141, 110);
-            this.productTxt.Margin = new System.Windows.Forms.Padding(4);
-            this.productTxt.Name = "productTxt";
-            this.productTxt.Size = new System.Drawing.Size(345, 29);
-            this.productTxt.TabIndex = 33;
-            this.productTxt.TextChanged += new System.EventHandler(this.productTxt_TextChanged);
-            // 
-            // txtprice
-            // 
-            this.txtprice.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtprice.Location = new System.Drawing.Point(141, 157);
-            this.txtprice.Margin = new System.Windows.Forms.Padding(4);
-            this.txtprice.Name = "txtprice";
-            this.txtprice.Size = new System.Drawing.Size(345, 29);
-            this.txtprice.TabIndex = 34;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(58, 155);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 29);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "Price:";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(822, 337);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(184, 40);
-            this.txtTotal.TabIndex = 36;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(740, 344);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 29);
-            this.label7.TabIndex = 37;
-            this.label7.Text = "Total:";
-            // 
-            // delBtn
-            // 
-            this.delBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.delBtn.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.delBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.delBtn.ForeColor = System.Drawing.Color.Black;
-            this.delBtn.Location = new System.Drawing.Point(894, 354);
-            this.delBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.delBtn.Name = "delBtn";
-            this.delBtn.Size = new System.Drawing.Size(149, 41);
-            this.delBtn.TabIndex = 24;
-            this.delBtn.Text = "Delivered";
-            this.delBtn.UseVisualStyleBackColor = false;
-            this.delBtn.Visible = false;
-            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
             // 
             // label8
             // 
@@ -551,56 +502,71 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "PURCHASE ORDER";
             // 
-            // dataGridView1
+            // dtgvPOLC
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(569, 47);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(638, 301);
-            this.dataGridView1.TabIndex = 23;
+            this.dtgvPOLC.AllowUserToAddRows = false;
+            this.dtgvPOLC.AllowUserToDeleteRows = false;
+            this.dtgvPOLC.AllowUserToResizeColumns = false;
+            this.dtgvPOLC.AllowUserToResizeRows = false;
+            this.dtgvPOLC.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvPOLC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvPOLC.Location = new System.Drawing.Point(569, 47);
+            this.dtgvPOLC.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgvPOLC.Name = "dtgvPOLC";
+            this.dtgvPOLC.ReadOnly = true;
+            this.dtgvPOLC.RowHeadersVisible = false;
+            this.dtgvPOLC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvPOLC.Size = new System.Drawing.Size(638, 301);
+            this.dtgvPOLC.TabIndex = 23;
             // 
-            // dataGridView2
+            // dtgvPOC
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(15, 47);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(474, 301);
-            this.dataGridView2.TabIndex = 22;
+            this.dtgvPOC.AllowUserToAddRows = false;
+            this.dtgvPOC.AllowUserToDeleteRows = false;
+            this.dtgvPOC.AllowUserToResizeColumns = false;
+            this.dtgvPOC.AllowUserToResizeRows = false;
+            this.dtgvPOC.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvPOC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvPOC.Location = new System.Drawing.Point(15, 47);
+            this.dtgvPOC.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgvPOC.Name = "dtgvPOC";
+            this.dtgvPOC.ReadOnly = true;
+            this.dtgvPOC.RowHeadersVisible = false;
+            this.dtgvPOC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvPOC.Size = new System.Drawing.Size(474, 301);
+            this.dtgvPOC.TabIndex = 22;
+            this.dtgvPOC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPOC_CellClick);
             // 
-            // cancelBtn
+            // dataComplete
             // 
-            this.cancelBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.cancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
-            this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelBtn.ForeColor = System.Drawing.Color.Black;
-            this.cancelBtn.Location = new System.Drawing.Point(1066, 354);
-            this.cancelBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(134, 41);
-            this.cancelBtn.TabIndex = 25;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = false;
-            this.cancelBtn.Visible = false;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.dataComplete.AllowUserToAddRows = false;
+            this.dataComplete.AllowUserToDeleteRows = false;
+            this.dataComplete.AllowUserToResizeColumns = false;
+            this.dataComplete.AllowUserToResizeRows = false;
+            this.dataComplete.BackgroundColor = System.Drawing.Color.White;
+            this.dataComplete.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataComplete.Location = new System.Drawing.Point(4, 4);
+            this.dataComplete.Margin = new System.Windows.Forms.Padding(4);
+            this.dataComplete.Name = "dataComplete";
+            this.dataComplete.ReadOnly = true;
+            this.dataComplete.RowHeadersVisible = false;
+            this.dataComplete.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataComplete.Size = new System.Drawing.Size(1238, 511);
+            this.dataComplete.TabIndex = 2;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Controls.Add(this.label11);
+            this.tabPage4.Controls.Add(this.dtgvPOLCL);
+            this.tabPage4.Controls.Add(this.dtgvPOCL);
+            this.tabPage4.Controls.Add(this.dataCancel);
+            this.tabPage4.Location = new System.Drawing.Point(4, 38);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1246, 410);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "CANCELLED";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -626,45 +592,63 @@
             this.label11.TabIndex = 24;
             this.label11.Text = "PURCHASE ORDER";
             // 
-            // dataGridView3
+            // dtgvPOLCL
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AllowUserToResizeColumns = false;
-            this.dataGridView3.AllowUserToResizeRows = false;
-            this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(577, 58);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(638, 301);
-            this.dataGridView3.TabIndex = 23;
+            this.dtgvPOLCL.AllowUserToAddRows = false;
+            this.dtgvPOLCL.AllowUserToDeleteRows = false;
+            this.dtgvPOLCL.AllowUserToResizeColumns = false;
+            this.dtgvPOLCL.AllowUserToResizeRows = false;
+            this.dtgvPOLCL.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvPOLCL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvPOLCL.Location = new System.Drawing.Point(577, 58);
+            this.dtgvPOLCL.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgvPOLCL.Name = "dtgvPOLCL";
+            this.dtgvPOLCL.ReadOnly = true;
+            this.dtgvPOLCL.RowHeadersVisible = false;
+            this.dtgvPOLCL.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvPOLCL.Size = new System.Drawing.Size(638, 301);
+            this.dtgvPOLCL.TabIndex = 23;
             // 
-            // dataGridView4
+            // dtgvPOCL
             // 
-            this.dataGridView4.AllowUserToAddRows = false;
-            this.dataGridView4.AllowUserToDeleteRows = false;
-            this.dataGridView4.AllowUserToResizeColumns = false;
-            this.dataGridView4.AllowUserToResizeRows = false;
-            this.dataGridView4.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(23, 58);
-            this.dataGridView4.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.ReadOnly = true;
-            this.dataGridView4.RowHeadersVisible = false;
-            this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView4.Size = new System.Drawing.Size(474, 301);
-            this.dataGridView4.TabIndex = 22;
+            this.dtgvPOCL.AllowUserToAddRows = false;
+            this.dtgvPOCL.AllowUserToDeleteRows = false;
+            this.dtgvPOCL.AllowUserToResizeColumns = false;
+            this.dtgvPOCL.AllowUserToResizeRows = false;
+            this.dtgvPOCL.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvPOCL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvPOCL.Location = new System.Drawing.Point(23, 58);
+            this.dtgvPOCL.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgvPOCL.Name = "dtgvPOCL";
+            this.dtgvPOCL.ReadOnly = true;
+            this.dtgvPOCL.RowHeadersVisible = false;
+            this.dtgvPOCL.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvPOCL.Size = new System.Drawing.Size(474, 301);
+            this.dtgvPOCL.TabIndex = 22;
+            this.dtgvPOCL.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPOCL_CellClick);
+            // 
+            // dataCancel
+            // 
+            this.dataCancel.AllowUserToAddRows = false;
+            this.dataCancel.AllowUserToDeleteRows = false;
+            this.dataCancel.AllowUserToResizeColumns = false;
+            this.dataCancel.AllowUserToResizeRows = false;
+            this.dataCancel.BackgroundColor = System.Drawing.Color.White;
+            this.dataCancel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataCancel.Location = new System.Drawing.Point(4, 4);
+            this.dataCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.dataCancel.Name = "dataCancel";
+            this.dataCancel.ReadOnly = true;
+            this.dataCancel.RowHeadersVisible = false;
+            this.dataCancel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataCancel.Size = new System.Drawing.Size(1238, 511);
+            this.dataCancel.TabIndex = 3;
             // 
             // orderlistmgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1270, 950);
+            this.ClientSize = new System.Drawing.Size(1297, 988);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
             this.Name = "orderlistmgt";
@@ -682,14 +666,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPO)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPOLC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPOC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataComplete)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPOLCL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPOCL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataCancel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -705,7 +689,6 @@
         private System.Windows.Forms.Label lblVendor;
         private System.Windows.Forms.Label lblDate2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button editBtn;
         private System.Windows.Forms.DataGridView dtgvOrd;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
@@ -731,11 +714,11 @@
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dtgvPOLC;
+        private System.Windows.Forms.DataGridView dtgvPOC;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridView dtgvPOLCL;
+        private System.Windows.Forms.DataGridView dtgvPOCL;
     }
 }

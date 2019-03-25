@@ -15,6 +15,7 @@ namespace Hotel_Inventory
     {
         public Form previousform { get; set; }
         MySqlConnection conn;
+
         dbconnector connect = new dbconnector();
 
         DataTable orders = new DataTable();
@@ -66,6 +67,51 @@ namespace Hotel_Inventory
             dtgvPO.Columns["staff"].HeaderText = "Staff";
             dtgvPO.Columns["total"].HeaderText = "Total";
             dtgvPO.Columns["status"].HeaderText = "Status";
+
+
+
+            String query_purchase_order_com = "SELECT purchase_order.id as id, DATE_FORMAT(order_date, '%Y/%m/%d %H:%i %p') as date, " +
+          " concat(staff.firstname,' ',staff.lastname) as staff, " +
+          "total, purchase_order.status FROM purchase_order, staff " +
+          "WHERE  purchase_order.status = 1 " +
+          "AND purchase_order.staff_id = staff.id ORDER BY order_date ";
+
+            conn.Open();
+            MySqlCommand comm2 = new MySqlCommand(query_purchase_order_com, conn);
+            MySqlDataAdapter adp_purchase_orderc = new MySqlDataAdapter(comm2);
+            conn.Close();
+            DataTable dt_purchase_orderc = new DataTable();
+            adp_purchase_orderc.Fill(dt_purchase_orderc);
+
+            dtgvPOC.DataSource = dt_purchase_orderc;
+
+            dtgvPOC.Columns["id"].Visible = false;
+            dtgvPOC.Columns["date"].HeaderText = "Date";
+            dtgvPOC.Columns["staff"].HeaderText = "Staff";
+            dtgvPOC.Columns["total"].HeaderText = "Total";
+            dtgvPOC.Columns["status"].HeaderText = "Status";
+
+
+            String query_purchase_order_can= "SELECT purchase_order.id as id, DATE_FORMAT(order_date, '%Y/%m/%d %H:%i %p') as date, " +
+        " concat(staff.firstname,' ',staff.lastname) as staff, " +
+        "total, purchase_order.status FROM purchase_order, staff " +
+        "WHERE  purchase_order.status = 2 " +
+        "AND purchase_order.staff_id = staff.id ORDER BY order_date ";
+
+            conn.Open();
+            MySqlCommand comm3 = new MySqlCommand(query_purchase_order_can, conn);
+            MySqlDataAdapter adp_purchase_ordercl = new MySqlDataAdapter(comm3);
+            conn.Close();
+            DataTable dt_purchase_ordercl = new DataTable();
+            adp_purchase_ordercl.Fill(dt_purchase_ordercl);
+
+            dtgvPOCL.DataSource = dt_purchase_ordercl;
+
+            dtgvPOCL.Columns["id"].Visible = false;
+            dtgvPOCL.Columns["date"].HeaderText = "Date";
+            dtgvPOCL.Columns["staff"].HeaderText = "Staff";
+            dtgvPOCL.Columns["total"].HeaderText = "Total";
+            dtgvPOCL.Columns["status"].HeaderText = "Status";
 
 
         }
@@ -394,16 +440,16 @@ namespace Hotel_Inventory
         {
             if (e.RowIndex > -1)
             {
+                cancelBtn.Visible = true;
+                cancelBtn.Enabled = true;
+
                 int selected_id = int.Parse(dtgvPO.Rows[e.RowIndex].Cells["id"].Value.ToString());
                 po_id = selected_id;
                 loadPOLines();
             }
         }
         public void loadPOLines()
-
         {
-          
-
             String query_order_line = "SELECT purchase_order_line.POL_id as id, menuitem.name as product," +
            " purchase_order_line.price, quantity as quantity, subtotal, (CASE WHEN purchase_order_line.status = 0 THEN 'Pending' WHEN purchase_order_line.status = 1 THEN 'Delivered' END) as status,supplierName as Supplier FROM supplier,purchase_order_line, " +
            " menuitem WHERE  menuitem.id = product_id AND purchase_order_id = '"+po_id+"'  AND " +
@@ -433,7 +479,7 @@ namespace Hotel_Inventory
             delBtn.Visible = true;
             delBtn.Enabled = true;
 
-            
+
             if (e.RowIndex > -1)
             {
                 int selected_id = int.Parse(dtgvPOL.Rows[e.RowIndex].Cells["id"].Value.ToString());
@@ -463,11 +509,13 @@ namespace Hotel_Inventory
             MySqlCommand comm_change_ordered = new MySqlCommand(query_change_ordered, conn);
             comm_change_ordered.ExecuteNonQuery();
             conn.Close();
+            loadPurchasingData();
+            dtgvPOL.DataSource = null;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
-            string query_del_update = "UPDATE purchase_order_line SET status = 'cancelled' WHERE id = " + orderline_id + " ";
+            string query_del_update = "UPDATE purchase_order SET status = 2 WHERE id = " + po_id + " ";
 
             conn.Open();
 
@@ -482,6 +530,78 @@ namespace Hotel_Inventory
             cancelBtn.Enabled = false;
             cancelBtn.Enabled = false;
             loadPurchasingData();
+
+        }
+        int poc_id;
+        private void dtgvPOC_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                int selected_id = int.Parse(dtgvPOC.Rows[e.RowIndex].Cells["id"].Value.ToString());
+                poc_id = selected_id;
+                loadPOLinesC();
+            }
+        }
+
+        public void loadPOLinesC()
+        {
+            String query_order_line = "SELECT purchase_order_line.POL_id as id, menuitem.name as product," +
+           " purchase_order_line.price, quantity as quantity, subtotal, (CASE WHEN purchase_order_line.status = 0 THEN 'Pending' WHEN purchase_order_line.status = 1 THEN 'Delivered' END) as status,supplierName as Supplier FROM supplier,purchase_order_line, " +
+           " menuitem WHERE  menuitem.id = product_id AND purchase_order_id = '" + poc_id + "'  AND " +
+           " menuitem.id = purchase_order_line.product_id AND purchase_order_line.supplier_id = supplier.id AND purchase_order_line.status != 2 group by id";
+
+            conn.Open();
+            MySqlCommand comm = new MySqlCommand(query_order_line, conn);
+            MySqlDataAdapter adp_order_line = new MySqlDataAdapter(comm);
+            conn.Close();
+            DataTable dt_order_line = new DataTable();
+            adp_order_line.Fill(dt_order_line);
+
+            dtgvPOLC.DataSource = dt_order_line;
+
+            dtgvPOLC.Columns["id"].Visible = false;
+            dtgvPOLC.Columns["product"].HeaderText = "Product Name";
+            dtgvPOLC.Columns["quantity"].HeaderText = "Quantity";
+            dtgvPOLC.Columns["price"].HeaderText = "Price";
+            dtgvPOLC.Columns["subtotal"].HeaderText = "Subtotal";
+            dtgvPOLC.Columns["status"].HeaderText = "Status";
+            dtgvPOLC.Columns["Supplier"].HeaderText = "Supplier";
+
+        }
+        int pocl_id;
+        private void dtgvPOCL_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                int selected_id = int.Parse(dtgvPOCL.Rows[e.RowIndex].Cells["id"].Value.ToString());
+                pocl_id = selected_id;
+                loadPOLinesCL();
+            }
+        }
+
+        public void loadPOLinesCL()
+        {
+            String query_order_line = "SELECT purchase_order_line.POL_id as id, menuitem.name as product," +
+           " purchase_order_line.price, quantity as quantity, subtotal, (CASE WHEN purchase_order_line.status = 0 THEN 'Pending' WHEN purchase_order_line.status = 1 THEN 'Delivered' END) as status,supplierName as Supplier FROM supplier,purchase_order_line, " +
+           " menuitem WHERE  menuitem.id = product_id AND purchase_order_id = '" + pocl_id + "'  AND " +
+           " menuitem.id = purchase_order_line.product_id AND purchase_order_line.supplier_id = supplier.id AND purchase_order_line.status != 2 group by id";
+
+            conn.Open();
+            MySqlCommand comm = new MySqlCommand(query_order_line, conn);
+            MySqlDataAdapter adp_order_line = new MySqlDataAdapter(comm);
+            conn.Close();
+            DataTable dt_order_line = new DataTable();
+            adp_order_line.Fill(dt_order_line);
+
+            dtgvPOLCL.DataSource = dt_order_line;
+
+            dtgvPOLCL.Columns["id"].Visible = false;
+            dtgvPOLCL.Columns["product"].HeaderText = "Product Name";
+            dtgvPOLCL.Columns["quantity"].HeaderText = "Quantity";
+            dtgvPOLCL.Columns["price"].HeaderText = "Price";
+            dtgvPOLCL.Columns["subtotal"].HeaderText = "Subtotal";
+            dtgvPOLCL.Columns["status"].HeaderText = "Status";
+            dtgvPOLCL.Columns["Supplier"].HeaderText = "Supplier";
 
         }
     }
