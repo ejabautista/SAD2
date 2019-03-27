@@ -108,6 +108,7 @@ namespace Hotel_Inventory
             frmsinout = new stockinmgt();
             //frmsinout.reference = this;
             frmsinout.ShowDialog();
+            readdata();
         }
 
         public itemmgt frmim;
@@ -142,7 +143,7 @@ namespace Hotel_Inventory
                             btn_stockoutlist.Enabled = false;
                             MessageBox.Show("SUCCESSFULLY STOCKED-OUT QUANTITY OF ITEMS!", "ATTENTION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             readdata();
-                    }
+                         }
                     }
                 else
                 {

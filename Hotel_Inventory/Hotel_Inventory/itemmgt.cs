@@ -152,16 +152,25 @@ namespace Hotel_Inventory
 
             using (MySqlConnection conn = connect.connector())
             {
-                if (txtitemname.Text == "" || txtsell.Text == "" || txtcost.Text == "")
+                if (txtitemname.Text == "" || txtsell.Text == "" || txtcost.Text == ""||cmbType.Text == "")
                 {
                     MessageBox.Show("Please fill up all fields!", "Missing fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
                 else
                 {
-                   
-                    string query = "INSERT INTO menuitem(name,sell_price,cost_price)" +
-                            "VALUES('" + txtitemname.Text + "','" + txtsell.Text + "','" + txtcost.Text + "')";
+                    int typevalue;
+                    string type = cmbType.Text;
+                    if (type == "Hotel")
+                    {
+                        typevalue = 0;
+                    }
+                    else
+                    {
+                        typevalue = 1;
+                    }
+                    string query = "INSERT INTO menuitem(name,sell_price,cost_price, status, type)" +
+                            "VALUES('" + txtitemname.Text + "','" + txtsell.Text + "','" + txtcost.Text + "',1,'"+ typevalue +"')";
                     conn.Open();
                     MySqlCommand comm = new MySqlCommand(query, conn);
                     comm.ExecuteNonQuery();
@@ -212,7 +221,10 @@ namespace Hotel_Inventory
                     MySqlCommand comm = new MySqlCommand(query, conn);
                     comm.ExecuteNonQuery();
                     conn.Close();
-                    string query2 = "UPDATE product_has_supplier SET product_id = '" + product_id + "' WHERE supplier_id = " + sup_id + "";
+
+                    
+
+                    string query2 = "UPDATE product_has_supplier SET supplier_id = '" + sup_id + "' WHERE product_id = " + product_id + "";
                     conn.Open();
                     MySqlCommand comm2 = new MySqlCommand(query2, conn);
                     comm2.ExecuteNonQuery();

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_create = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbSup = new System.Windows.Forms.ComboBox();
+            this.Supplier = new System.Windows.Forms.Label();
             this.txtsell = new System.Windows.Forms.TextBox();
             this.txtcost = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,8 +47,8 @@
             this.clearBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.Supplier = new System.Windows.Forms.Label();
-            this.cmbSup = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_itemmgt)).BeginInit();
             this.SuspendLayout();
@@ -75,6 +77,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbType);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cmbSup);
             this.groupBox1.Controls.Add(this.Supplier);
             this.groupBox1.Controls.Add(this.txtsell);
@@ -92,6 +96,27 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
+            // 
+            // cmbSup
+            // 
+            this.cmbSup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSup.FormattingEnabled = true;
+            this.cmbSup.Location = new System.Drawing.Point(777, 143);
+            this.cmbSup.Name = "cmbSup";
+            this.cmbSup.Size = new System.Drawing.Size(358, 44);
+            this.cmbSup.TabIndex = 16;
+            // 
+            // Supplier
+            // 
+            this.Supplier.AutoSize = true;
+            this.Supplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Supplier.ForeColor = System.Drawing.Color.Black;
+            this.Supplier.Location = new System.Drawing.Point(625, 147);
+            this.Supplier.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Supplier.Name = "Supplier";
+            this.Supplier.Size = new System.Drawing.Size(121, 32);
+            this.Supplier.TabIndex = 15;
+            this.Supplier.Text = "Supplier";
             // 
             // txtsell
             // 
@@ -189,23 +214,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgv_itemmgt.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv_itemmgt.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgv_itemmgt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgv_itemmgt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgv_itemmgt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgv_itemmgt.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgv_itemmgt.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtgv_itemmgt.Location = new System.Drawing.Point(7, 69);
             this.dtgv_itemmgt.Margin = new System.Windows.Forms.Padding(4);
             this.dtgv_itemmgt.Name = "dtgv_itemmgt";
@@ -249,25 +274,29 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Supplier
+            // label2
             // 
-            this.Supplier.AutoSize = true;
-            this.Supplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Supplier.ForeColor = System.Drawing.Color.Black;
-            this.Supplier.Location = new System.Drawing.Point(625, 147);
-            this.Supplier.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Supplier.Name = "Supplier";
-            this.Supplier.Size = new System.Drawing.Size(121, 32);
-            this.Supplier.TabIndex = 15;
-            this.Supplier.Text = "Supplier";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(32, 143);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(147, 32);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Item Type:";
             // 
-            // cmbSup
+            // cmbType
             // 
-            this.cmbSup.FormattingEnabled = true;
-            this.cmbSup.Location = new System.Drawing.Point(777, 143);
-            this.cmbSup.Name = "cmbSup";
-            this.cmbSup.Size = new System.Drawing.Size(358, 44);
-            this.cmbSup.TabIndex = 16;
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Items.AddRange(new object[] {
+            "Hotel",
+            "Restaurant"});
+            this.cmbType.Location = new System.Drawing.Point(198, 137);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(146, 44);
+            this.cmbType.TabIndex = 18;
             // 
             // itemmgt
             // 
@@ -311,5 +340,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label Supplier;
         private System.Windows.Forms.ComboBox cmbSup;
+        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.Label label2;
     }
 }

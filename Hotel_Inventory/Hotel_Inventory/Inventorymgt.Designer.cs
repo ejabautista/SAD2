@@ -134,7 +134,7 @@
             // 
             // btn_stockout
             // 
-            this.btn_stockout.Location = new System.Drawing.Point(584, 25);
+            this.btn_stockout.Location = new System.Drawing.Point(584, 33);
             this.btn_stockout.Name = "btn_stockout";
             this.btn_stockout.Size = new System.Drawing.Size(134, 69);
             this.btn_stockout.TabIndex = 35;
